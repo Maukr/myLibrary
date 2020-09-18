@@ -14,4 +14,50 @@
     */
     font-size: 62.5%;
     scroll-behavior: smooth;
+    
   }
+  body{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    width: 100%;
+    background-color: #b8c6db;
+    background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+  }
+  #title{
+    text-align: center;
+    font-size: 4em;
+    margin: 1em;
+    color: #0096c7;
+  }
+  #books {
+    width: 100%;
+    border-collapse: collapse;
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 1.5em;
+    background: white;
+  }
+  
+  #books td, #books th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #books tr:nth-child(even){background-color: #caf0f8;}
+  
+  #books tr:hover {background-color: #90e0ef;}
+  
+  #books th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #48cae4;
+    color: white;
+  }
+
+  @media(max-width: 480px){
+      #title{
+        font-size: 3.5em;
+      }
+  }
+  
