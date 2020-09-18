@@ -8,62 +8,99 @@
 </head>
 <body>
     
-    <h1 id="title">My Library</h1>
+    <h1 id="web-title">My Library</h1>
+    <form id="form">
+        <div>
+            <label for="title">Title: </label>
+            <input type="text" name="title" id="title"/>
+        </div>
+        
+        <div>
+            <label for="author">Author: </label>
+            <input type="text" name="author" id="author"/>
+        </div>
+        
+        <div>
+            <label for="pages">Pages: </label>
+            <input type="number" name="pages" id="pages"/>
+        </div>
+        <div>
+            
+                <input type="radio" id="read-it" name="read" value="read-it">
+                <label for="read">I already read it</label><br>
+          
+        
+                <input type="radio" id="not-read" name="read" value="not-read">
+                <label for="not-read">Not yet</label><br>
+              
+        </div>  
+    </form>
     <table id="books">
         <tr>
-          <th>Company</th>
-          <th>Contact</th>
-          <th>Country</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Pages</th>
+          <th>Read</th>
         </tr>
         <tr>
           <td>Alfreds Futterkiste</td>
           <td>Maria Anders</td>
+          <td>Germany</td>
           <td>Germany</td>
         </tr>
         <tr>
           <td>Berglunds snabbköp</td>
           <td>Christina Berglund</td>
           <td>Sweden</td>
+          <td>Germany</td>
         </tr>
         <tr>
           <td>Centro comercial Moctezuma</td>
           <td>Francisco Chang</td>
           <td>Mexico</td>
+          <td>Germany</td>
         </tr>
         <tr>
           <td>Ernst Handel</td>
           <td>Roland Mendel</td>
           <td>Austria</td>
+          <td>Germany</td>
         </tr>
         <tr>
           <td>Island Trading</td>
           <td>Helen Bennett</td>
           <td>UK</td>
+          <td>Germany</td>
         </tr>
         <tr>
           <td>Königlich Essen</td>
           <td>Philip Cramer</td>
+          <td>Germany</td>
           <td>Germany</td>
         </tr>
         <tr>
           <td>Laughing Bacchus Winecellars</td>
           <td>Yoshi Tannamuri</td>
           <td>Canada</td>
+          <td>Germany</td>
         </tr>
         <tr>
           <td>Magazzini Alimentari Riuniti</td>
           <td>Giovanni Rovelli</td>
           <td>Italy</td>
+          <td>Germany</td>
         </tr>
         <tr>
           <td>North/South</td>
           <td>Simon Crowther</td>
           <td>UK</td>
+          <td>Germany</td>
         </tr>
         <tr>
           <td>Paris spécialités</td>
           <td>Marie Bertrand</td>
           <td>France</td>
+          <td>Germany</td>
         </tr>
       </table>
     <script src="main.js"></script>

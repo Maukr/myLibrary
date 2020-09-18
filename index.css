@@ -23,11 +23,11 @@
     background-color: #b8c6db;
     background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
   }
-  #title{
+  #web-title{
     text-align: center;
     font-size: 4em;
     margin: 1em;
-    color: #0096c7;
+    color: #0077b6;
   }
   #books {
     width: 100%;
@@ -55,9 +55,40 @@
     color: white;
   }
 
+  #form{
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 2em auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #form label{
+    font-size: 1.5em;
+    font-weight: 800;
+  }
+  input[type="text"]{
+    width: 250px;
+  }
+  #pages{
+    width: 40px;
+  }
+  @media(max-width: 850px){
+    #form{
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding-left: 1em;
+    }
+  }
   @media(max-width: 480px){
-      #title{
+      #web-title{
         font-size: 3.5em;
       }
   }
   
+  @media(max-width: 350px){
+    #books td, #books th {
+      padding: 1px;
+    }
+}
