@@ -26,14 +26,45 @@
   #web-title{
     text-align: center;
     font-size: 4em;
-    margin: 1em;
+    margin: 0.5em;
     color: #0077b6;
   }
+  #form label{
+    font-size: 1.5em;
+  }
+  input[type=text],input[type=number], select, textarea {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */ 
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+  input[type=submit] {
+    font-weight: 800;
+    background-color: #48cae4;
+    color: white;
+    padding: 12px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 16px;
+    width: 100%;
+  }
+  input[type=submit]:hover {
+    background-color:#90e0ef;
+  }
+  .container {
+    margin: 0 auto;
+    max-width: 900px;
+    padding: 20px;
+  }  
   #books {
     width: 100%;
     border-collapse: collapse;
     max-width: 900px;
-    margin: 0 auto;
+    margin: 0 auto 1em auto;
     font-size: 1.5em;
     background: white;
   }
@@ -55,35 +86,7 @@
     color: white;
   }
 
-  #form{
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto 2em auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  #form label{
-    font-size: 1.5em;
-    font-weight: 800;
-  }
-  input[type="text"]{
-    width: 250px;
-  }
-  #pages{
-    width: 40px;
-  }
-  @media(max-width: 850px){
-    #form{
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      padding-left: 1em;
-    }
-    #form div{
-      margin-bottom: 1em;
-    }
-  }
+
   @media(max-width: 480px){
       #web-title{
         font-size: 3.5em;

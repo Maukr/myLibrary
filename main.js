@@ -89,4 +89,9 @@ function displayBooksOnPage(library){
     });
 }
 
+function handleSubmit(e){
+    e.preventDefault();
+    console.log('funca');
+}
+
 displayBooksOnPage(myLibrary);
