@@ -74,16 +74,18 @@ function displayBooksOnPage(library){
     library.forEach(book => {
         console.log(book);
         const row = document.createElement('tr');
+        row.classList.add('book');
 
         for(const property in book){
             let cell = document.createElement('td');
+            if(property !== 'info'){
+                if(property === 'read')
+                    book[property] ? cell.innerText = 'Yes' : cell.innerText = 'No';
+                else
+                    cell.innerText = book[property];
 
-            if(property === 'read')
-                book[property] ? cell.innerText = 'Yes' : cell.innerText = 'No';
-            else
-                cell.innerText = book[property];
-
-            row.appendChild(cell);
+                row.appendChild(cell);
+            }
         }
         table.appendChild(row);
     });
@@ -91,7 +93,32 @@ function displayBooksOnPage(library){
 
 function handleSubmit(e){
     e.preventDefault();
-    console.log('funca');
+
+    const titleInput = document.querySelector('#title');
+    const authorInput = document.querySelector('#author');
+    const pagesInput = document.querySelector('#pages');
+    const readInput = document.querySelector('#read-it');
+
+    let newBook = new Book(titleInput.value, authorInput.value, pagesInput.value, readInput.checked ? true : false);
+
+    myLibrary.push(newBook);
+
+    clearTable();
+
+    displayBooksOnPage(myLibrary);
+
+    document.getElementById("form").reset();
+    
+}
+
+function clearTable(){
+
+    const books = Array.from(document.querySelectorAll('.book'));
+
+    for(let i = 0; i< books.length; i++){
+        books[i].remove();
+    }
+
 }
 
 displayBooksOnPage(myLibrary);
