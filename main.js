@@ -7,49 +7,49 @@ let myLibrary = [{
 {
     title: 'Ambar Futterkiste',
     author: 'Maria Anders',
-    pages: '222',
+    pages: '777',
     read: false
 },
 {
     title: 'Sota Futterkiste',
     author: 'Maria Anders',
-    pages: '123',
+    pages: '6626',
     read: true
 },
 {
     title: 'Sota Futterkiste',
     author: 'Maria Anders',
-    pages: '123',
+    pages: '555',
     read: true
 },
 {
     title: 'Sota Futterkiste',
     author: 'Maria Anders',
-    pages: '123',
+    pages: '444',
     read: true
 },
 {
     title: 'Sota Futterkiste',
     author: 'Maria Anders',
-    pages: '123',
+    pages: '333',
     read: true
 },
 {
     title: 'Sota Futterkiste',
     author: 'Maria Anders',
-    pages: '123',
+    pages: '222',
     read: true
 },
 {
     title: 'Sota Futterkiste',
     author: 'Maria Anders',
-    pages: '123',
+    pages: '111',
     read: true
 },
 {
     title: 'Sota Futterkiste',
     author: 'Maria Anders',
-    pages: '123',
+    pages: '5555',
     read: true
 }];
 
@@ -71,10 +71,12 @@ function displayBooksOnPage(library){
 
     const table = document.querySelector('tbody');
 
-    library.forEach(book => {
+    library.forEach((book, index) => {
         console.log(book);
+
         const row = document.createElement('tr');
         row.classList.add('book');
+        row.dataset.bookPosition = index;
 
         for(const property in book){
             let cell = document.createElement('td');
@@ -87,6 +89,20 @@ function displayBooksOnPage(library){
                 row.appendChild(cell);
             }
         }
+
+        //Boton de eliminar
+        let cell = document.createElement('td');
+        const deleteButton = document.createElement('button');
+        deleteButton.addEventListener('click', (e) => {
+            console.log(e.target.parentElement.parentElement.dataset.bookPosition);
+            myLibrary.splice(e.target.parentElement.parentElement.dataset.bookPosition, 1);
+            clearTable();
+            displayBooksOnPage(myLibrary);
+        });
+        deleteButton.innerText = 'X';
+        cell.appendChild(deleteButton);
+        row.appendChild(cell);
+
         table.appendChild(row);
     });
 }
