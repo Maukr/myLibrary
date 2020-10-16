@@ -81,8 +81,29 @@ function displayBooksOnPage(library){
         for(const property in book){
             let cell = document.createElement('td');
             if(property !== 'info'){
-                if(property === 'read')
-                    book[property] ? cell.innerText = 'Yes' : cell.innerText = 'No';
+                if(property === 'read'){
+                    const readButton = document.createElement('button');
+
+                    if(book[property]){
+                        readButton.innerText = 'Yes';
+                        readButton.classList.add('read');
+                    }else{
+                        readButton.innerText = 'No';
+                        readButton.classList.add('unread');
+                    }
+
+                    readButton.addEventListener('click', (e)=>{
+                        if(e.target.className === "read"){
+                            readButton.classList.replace("read", "unread");
+                            readButton.innerText = 'No';
+                        }else{
+                            readButton.classList.replace("unread", "read");
+                            readButton.innerText = 'Yes';
+                        }
+                    });
+
+                    cell.appendChild(readButton);
+                }
                 else
                     cell.innerText = book[property];
 
@@ -92,6 +113,7 @@ function displayBooksOnPage(library){
 
         //Boton de eliminar
         let cell = document.createElement('td');
+        cell.classList.add('col-delete');
         const deleteButton = document.createElement('button');
         deleteButton.addEventListener('click', (e) => {
             console.log(e.target.parentElement.parentElement.dataset.bookPosition);
