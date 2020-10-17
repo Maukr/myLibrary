@@ -1,57 +1,4 @@
-let myLibrary = [{
-    title: 'Alfreds Futterkiste',
-    author: 'Maria Anders',
-    pages: '123',
-    read: true
-},
-{
-    title: 'Ambar Futterkiste',
-    author: 'Maria Anders',
-    pages: '777',
-    read: false
-},
-{
-    title: 'Sota Futterkiste',
-    author: 'Maria Anders',
-    pages: '6626',
-    read: true
-},
-{
-    title: 'Sota Futterkiste',
-    author: 'Maria Anders',
-    pages: '555',
-    read: true
-},
-{
-    title: 'Sota Futterkiste',
-    author: 'Maria Anders',
-    pages: '444',
-    read: true
-},
-{
-    title: 'Sota Futterkiste',
-    author: 'Maria Anders',
-    pages: '333',
-    read: true
-},
-{
-    title: 'Sota Futterkiste',
-    author: 'Maria Anders',
-    pages: '222',
-    read: true
-},
-{
-    title: 'Sota Futterkiste',
-    author: 'Maria Anders',
-    pages: '111',
-    read: true
-},
-{
-    title: 'Sota Futterkiste',
-    author: 'Maria Anders',
-    pages: '5555',
-    read: true
-}];
+let myLibrary = [];
 
 function Book(title, author, pages, read){
     this.title = title;
@@ -87,20 +34,29 @@ function displayBooksOnPage(library){
                     if(book[property]){
                         readButton.innerText = 'Yes';
                         readButton.classList.add('read');
+                        
                     }else{
                         readButton.innerText = 'No';
                         readButton.classList.add('unread');
+                        
                     }
 
                     readButton.addEventListener('click', (e)=>{
+
                         if(e.target.className === "read"){
                             readButton.classList.replace("read", "unread");
                             readButton.innerText = 'No';
+                            book.read = false;
                         }else{
                             readButton.classList.replace("unread", "read");
                             readButton.innerText = 'Yes';
+                            book.read = true;
                         }
+                        //LocalStorage
+                        saveLibToLocal();
                     });
+
+                     
 
                     cell.appendChild(readButton);
                 }
@@ -118,6 +74,8 @@ function displayBooksOnPage(library){
         deleteButton.addEventListener('click', (e) => {
             console.log(e.target.parentElement.parentElement.dataset.bookPosition);
             myLibrary.splice(e.target.parentElement.parentElement.dataset.bookPosition, 1);
+            //LocalStorage
+            saveLibToLocal();
             clearTable();
             displayBooksOnPage(myLibrary);
         });
@@ -126,6 +84,7 @@ function displayBooksOnPage(library){
         row.appendChild(cell);
 
         table.appendChild(row);
+        
     });
 }
 
@@ -140,6 +99,9 @@ function handleSubmit(e){
     let newBook = new Book(titleInput.value, authorInput.value, pagesInput.value, readInput.checked ? true : false);
 
     myLibrary.push(newBook);
+
+    //LocalStorage
+    saveLibToLocal();
 
     clearTable();
 
@@ -157,6 +119,27 @@ function clearTable(){
         books[i].remove();
     }
 
+}
+
+function saveLibToLocal() {
+    localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+}
+
+function getLibFromLocal() {
+    const libFromLocal = [];
+    if (localStorage.length != 0) {
+      JSON.parse(localStorage.getItem("myLibrary")).forEach((book) => {
+        libFromLocal.push(
+          new Book(book.title, book.author, book.pages, book.read, book.id)
+        );
+      });
+      return libFromLocal;
+    }
+}
+
+if(localStorage.length > 0) {
+    console.log('asdas');
+    myLibrary = getLibFromLocal();
 }
 
 displayBooksOnPage(myLibrary);
